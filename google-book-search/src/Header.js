@@ -5,7 +5,7 @@ import './App.css';
 const Header =  () => {
     return (
         <header>
-            <i class="fas fa-book-open fa-3x"></i>
+            <i className ="fas fa-book-open fa-3x"></i>
             <h1>Google Book Search</h1>
         </header>        
     )
