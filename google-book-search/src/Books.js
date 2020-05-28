@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+// this portion contains all of the logic and state for this app
 import SearchBox from './SearchBox';
+import React, { Component } from 'react';
 import request from 'superagent';
+import BookList from './BookList';
+import BookCard from './BookCard';
 
 class Books extends Component {
     constructor(props) {
@@ -17,7 +20,8 @@ class Books extends Component {
             .get("https://www.googleapis.com/books/v1/volumes")
             .query({ q: this.state.searchField })
             .then((data) => {
-                console.log(data);
+                //console.log(data);
+                this.setState({ books: [...data.body.items]})
             })
     }
 
@@ -30,6 +34,7 @@ class Books extends Component {
     return (
     <div>
       <SearchBox searchBook={this.searchBook} handleSearch={this.handleSearch} />
+      <BookList books={this.state.books} />
     </div>
   );
 }
